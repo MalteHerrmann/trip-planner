@@ -1,12 +1,25 @@
 import React from 'react';
+import data from '../data.json';
 
 
 const TripPlan = () => {
+    let tripData = data["Trip 1"]
+    tripData.forEach(tripInfo => { 
+        if (!tripInfo["end"]) {
+            tripInfo["end"] = tripInfo["begin"]
+        }
+     })
+
     return (
         <>
-            <Trip name="New York" begin="05-28-2022" end="05-05-2022"/>
-            <Trip name="Harvard" begin="06-05-2022"/>
-            <Trip name="Boston" begin="06-06-2022" end="06-11-2022" />
+            {tripData.map(tripInfo => 
+                <Trip 
+                    key={tripInfo["id"]} 
+                    name={tripInfo["destination"]} 
+                    begin={tripInfo["begin"]} 
+                    end={tripInfo["end"]} 
+                />
+            )}
             <AddTripButton />
         </>
     )
@@ -14,6 +27,7 @@ const TripPlan = () => {
 
 
 interface TripProps {
+    key:string;
     name:string;
     begin:string;
     end?:string;
@@ -58,7 +72,7 @@ interface DurationProps {
 
 const TripDuration: React.FC<DurationProps> = props => {
     let durationString = props.end !== "" ? props.begin + " - " + props.end : props.begin
-    console.log("Duration string: ", durationString)
+
     return (
         <span>{durationString}</span>
     )

@@ -1,0 +1,22 @@
+{
+    "Trip 1":
+    [
+        {
+            "id": "1",
+            "destination": "New York",
+            "begin": "05-28-2022",
+            "end": "06-05-2022"
+        },
+        {
+            "id": "2",
+            "destination": "Harvard",
+            "begin": "06-05-2022"
+        },
+        {
+            "id": "3",
+            "destination": "Boston",
+            "begin": "06-05-2022",
+            "end": "06-11-2022"
+        }
+    ]  
+}
