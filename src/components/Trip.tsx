@@ -1,5 +1,6 @@
 import React from 'react';
 import data from '../data.json';
+import AddTripBox from './AddTripBox'
 
 
 const TripPlan = () => {
@@ -15,12 +16,12 @@ const TripPlan = () => {
             {tripData.map(tripInfo => 
                 <Trip 
                     key={tripInfo["id"]} 
-                    name={tripInfo["destination"]} 
+                    name={tripInfo["destination"]}
                     begin={tripInfo["begin"]} 
                     end={tripInfo["end"]} 
                 />
             )}
-            <AddTripButton />
+            <AddTripBox />
         </>
     )
 }
@@ -75,15 +76,6 @@ const TripDuration: React.FC<DurationProps> = props => {
 
     return (
         <span>{durationString}</span>
-    )
-}
-
-
-const AddTripButton: React.FC<{}> = () => {
-    return (
-        <button className="AddButton" onClick={() => console.log("Hier.")}>
-            +
-        </button>
     )
 }
 
