@@ -2,8 +2,8 @@ import React from 'react';
 
 
 /**
- * Component, which contains a button to fold / unfold the box where
- * a new trip can be defined.
+ * Component, which contains the box where a new trip can be defined,
+ * as well as a button to fold / unfold this box.
  */
 const AddTripBox: React.FC<{}> = () => {
     const [visible, setVisible] = React.useState(false)
@@ -24,11 +24,12 @@ const AddTripBox: React.FC<{}> = () => {
  * the information about a new trip.
  */
 const AddTripDialog: React.FC<{}> = () => {
-    const defaultData: {[key: string]: string} = {destination: "", beginning: "", end: ""} // Assign indexing type using {[key: indexType]: storedValueType}
+    const defaultData: {[key: string]: string} = {destination: "TestDest", beginning: "101", end: ""} // Assign indexing type using {[key: indexType]: storedValueType}
     const [tripData, setTripData] = React.useState(defaultData)
 
     const insertIntoTripData = (name:string, event:React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value
+        console.log("New value for " + name + ": " + value)
         let newTripData = tripData
         console.log("Data pre: ", tripData)
         newTripData[name] = value
