@@ -24,31 +24,22 @@ const AddTripBox: React.FC<{}> = () => {
  * the information about a new trip.
  */
 const AddTripDialog: React.FC<{}> = () => {
-    const defaultData: {[key: string]: string} = {destination: "TestDest", beginning: "101", end: ""} // Assign indexing type using {[key: indexType]: storedValueType}
-    const [tripData, setTripData] = React.useState(defaultData)
-
-    const insertIntoTripData = (name:string, event:React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value
-        console.log("New value for " + name + ": " + value)
-        let newTripData = tripData
-        console.log("Data pre: ", tripData)
-        newTripData[name] = value
-        console.log("Date neu: ", newTripData)
-        setTripData(newTripData)
-    }
+    const [destination, setDestination] = React.useState("")
+    const [beginning, setBeginning] = React.useState("")
+    const [end, setEnd] = React.useState("")
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log("handleSubmit with data: ", tripData)
-        console.log("Setting data back to default: ", defaultData)
-        setTripData(defaultData)
+        setDestination("")
+        setBeginning("")
+        setEnd("")
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Destination" value={tripData["destination"]} onChange={event => insertIntoTripData("destination", event)} />
-            <input type="text" placeholder="Beginning" value={tripData["beginning"]} onChange={event => insertIntoTripData("beginning", event)} />
-            <input type="text" placeholder="End" value={tripData["end"]} onChange={event => insertIntoTripData("end", event)} />
+            <input type="text" placeholder="Destination" value={destination} onChange={event => setDestination(event.target.value)} />
+            <input type="text" placeholder="Beginning" value={beginning} onChange={event => setBeginning(event.target.value)} />
+            <input type="text" placeholder="End" value={end} onChange={event => setEnd(event.target.value)} />
 
             <button type="submit">
                 Add to trip

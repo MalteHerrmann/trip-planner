@@ -5,8 +5,8 @@ import AddTripBox from './AddTripBox'
 
 /*
  * TripPlan build the component to display the information
- * for a given trip. It also contains a button to add a new
- * destination for the current trip.
+ * for a given trip plan, which contains several distinct trips.
+ * It also contains a button to add a new destination for the current trip.
  */
 const TripPlan = () => {
     let tripData = data["Trip 1"]
