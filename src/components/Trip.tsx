@@ -2,49 +2,42 @@ import React from 'react';
 import data from '../data.json';
 import AddTripBox from './AddTripBox'
 
-
-/*
+/**
  * TripPlan build the component to display the information
  * for a given trip plan, which contains several distinct trips.
  * It also contains a button to add a new destination for the current trip.
  */
 const TripPlan = () => {
-    let tripData = data["Trip 1"]
-    tripData.forEach(tripInfo => { 
-        if (!tripInfo["end"]) {
-            tripInfo["end"] = tripInfo["begin"]
-        }
-     })
+    let initialTripData = data["Trip 1"]
+    let [tripData, setTripData] = React.useState(initialTripData)
 
     return (
         <>
-            {tripData.map(tripInfo => 
+            {tripData.map(tripInfo =>
                 <Trip 
-                    key={tripInfo["id"]} 
                     name={tripInfo["destination"]}
                     begin={tripInfo["begin"]} 
                     end={tripInfo["end"]} 
                 />
             )}
-            <AddTripBox />
+            <AddTripBox tripData={tripData} setTripData={setTripData}/>
         </>
     )
 }
 
 
-/*
+/**
  * TripProps defines an interface, containing all relevant
  * information for a trip.
  */
 interface TripProps {
-    key:string;
     name:string;
     begin:string;
     end?:string;
 }
 
 
-/*
+/**
  * The Trip component combines the TripDestination and TripDuration
  * components.
  */
@@ -61,7 +54,7 @@ const Trip: React.FC<TripProps> = props => {
 }
 
 
-/*
+/**
  * DestinationProps is an interface, to define the
  * attributes for the destination.
  */
@@ -71,7 +64,7 @@ interface DestinationProps {
 }
 
 
-/*
+/**
  * TripDestination contains the information about the destination of the
  * given trip.
  */
@@ -86,7 +79,7 @@ const TripDestination: React.FC<DestinationProps> = props => {
 }
 
 
-/*
+/**
  * DurationProps is an interface, to define the
  * attributes for the duration of a trip.
  */
@@ -96,7 +89,7 @@ interface DurationProps {
 }
 
 
-/*
+/**
  * TripDuration contains the information about the duration of the
  * given trip.
  */
