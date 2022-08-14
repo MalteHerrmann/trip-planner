@@ -42,9 +42,6 @@ const AddTripDialog: React.FC<AddTripDialogProps> = props => {
     const [end, setEnd] = React.useState("")
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        // TODO: Add new trip to the actual trip plan.
-        //       This means, that the new data has to be passed
-        //       AddTripDialog > AddTripBox > TripPlan
         event.preventDefault()
 
         props.setTripData([...props.tripData, {
